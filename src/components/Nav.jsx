@@ -14,6 +14,9 @@ const Nav = () => {
               <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/">Add Patient</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/ViewAll">View All</a>
+          </li>
            
         </ul>
       </div>
