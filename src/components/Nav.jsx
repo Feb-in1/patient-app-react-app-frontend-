@@ -17,6 +17,7 @@ const Nav = () => {
           <li class="nav-item">
             <a class="nav-link  " href="/search">Search Patient</a>
           </li>
+          
           <li class="nav-item">
             <a class="nav-link active" href="/ViewAll">View All</a>
           </li>

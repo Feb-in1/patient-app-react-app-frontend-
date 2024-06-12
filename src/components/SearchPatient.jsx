@@ -8,10 +8,36 @@ const SearchPatient = () => {
             "nam": ""
         }
     )
+
+
     const [result, setResult] = useState([])
+    const DeleteCourse = (id) => {
+        let input = { "_id": id }
+        axios.post("http://localhost:8080/delete", input).then(
+            (response) => {
+                console.log(response.data)
+                if (response.data.status == "Success") {
+                    alert("Successfully deleted")
+
+                } else {
+                    alert("Error in Deletion")
+
+                }
+            }
+        ).catch(
+            (error) => {
+                console.log(error)
+            }
+        ).finally
+
+    }
+
+
+
     const inputHandler = (event) => {
         setData({ ...data, [event.target.name]: event.target.value })
     }
+
 
     const readValue = () => {
         axios.post("http://localhost:8080/search", data).then((response) => {
@@ -74,6 +100,7 @@ const SearchPatient = () => {
                                     <th scope="col">Address</th>
                                     <th scope="col">Blood group</th>
                                     <th scope="col">Doctor Name</th>
+                                    <th scope="col"></th>
 
                                 </tr>
                             </thead>
@@ -91,6 +118,9 @@ const SearchPatient = () => {
                                                 <td>{value.addr}</td>
                                                 <td>{value.bg}</td>
                                                 <td>{value.dnam}</td>
+                                                <td> <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                                                    <button className="btn btn-danger" onClick={() => { DeleteCourse(value._id) }}>Delete</button>
+                                                </div></td>
 
                                             </tr>
                                         }
